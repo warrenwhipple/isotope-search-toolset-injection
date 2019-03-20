@@ -1,18 +1,32 @@
 {
   "name": "isotope-search",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Filter a masonry view by wearhc bar input",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/warrenwhipple/isotope-search.git"
+  },
+  "browser": "dist/isotope-search.js",
   "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "isotope",
+    "masonry",
+    "filter",
+    "search",
+    "searchbar",
+    "sticky"
+  ],
+  "author": "Warren Whipple",
+  "license": "MIT",
   "dependencies": {
     "fuse.js": "^3.4.4",
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
-    "stickybits": "^3.6.4"
+    "stickybits": "^3.6.4",
+    "rollup": "^1.7.0"
   }
 }

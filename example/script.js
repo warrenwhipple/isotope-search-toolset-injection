@@ -13,5 +13,6 @@ $(function() {
         "</p></div>"
     );
 
-  // hello
+  // Initialize isotope search
+  isotopeSearch();
 });
