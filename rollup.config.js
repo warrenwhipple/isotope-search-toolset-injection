@@ -1,4 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve';
+import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser';
 
 export default [
@@ -9,7 +10,12 @@ export default [
       file: 'dist/isotope-search.js',
       format: 'iife',
     },
-    plugins: [resolve()],
+    plugins: [
+      resolve(),
+      babel({
+        exclude: 'node_modules/**',
+      }),
+    ],
   },
   {
     input: 'src/main.js',
@@ -18,6 +24,12 @@ export default [
       file: 'dist/isotope-search.min.js',
       format: 'iife',
     },
-    plugins: [resolve(), terser()],
+    plugins: [
+      resolve(),
+      babel({
+        exclude: 'node_modules/**',
+      }),
+      terser(),
+    ],
   },
 ];
