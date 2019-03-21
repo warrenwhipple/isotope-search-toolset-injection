@@ -27,10 +27,10 @@
     "fuse.js": "^3.4.4",
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
-    "stickybits": "^3.6.4",
-    "rollup": "^1.7.0"
+    "stickybits": "^3.6.4"
   },
   "devDependencies": {
+    "rollup": "^1.7.0",
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-terser": "^4.0.4"
   }
