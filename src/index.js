@@ -5,13 +5,14 @@ import imagesLoaded from 'imagesloaded';
 
 export function init({
   stickySelector,
+  stickyOffset,
   gridSelector,
   gridItemSelector,
   columnSizerSelector,
   gutterSizerSelector,
 }) {
   // Sticky search bar
-  stickybits(stickySelector);
+  stickybits(stickySelector, { stickyBitStickyOffset: stickyOffset });
 
   // Scroll to top of wrapper on typing in search bar
   // TODO

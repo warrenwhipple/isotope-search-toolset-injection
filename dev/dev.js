@@ -16,6 +16,7 @@ $(function() {
   // Initialize isotope search
   isotopeSearch.init({
     stickySelector: 'input',
+    stickyOffset: 16,
     gridSelector: '.grid',
     gridItemSelector: '.item',
     columnSizerSelector: '.column-sizer',
