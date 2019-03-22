@@ -14,5 +14,5 @@ $(function() {
     );
 
   // Initialize isotope search
-  isotopeSearch();
+  isotopeSearch.init();
 });

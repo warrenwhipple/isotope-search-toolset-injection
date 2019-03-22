@@ -6,11 +6,9 @@
     "type": "git",
     "url": "https://bitbucket.org/warrenwhipple/isotope-search.git"
   },
-  "browser": "dist/isotope-search.js",
-  "browserMin": "dist/isotope-search.min.js",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "webpack --mode=production",
+    "dev": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -32,10 +30,11 @@
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
+    "babel-loader": "^8.0.5",
+    "faker": "^4.1.0",
     "jquery": "^3.3.1",
-    "rollup": "^1.7.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-terser": "^4.0.4"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   }
 }
