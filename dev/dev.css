@@ -4,13 +4,13 @@
 body {
   font-family: sans-serif;
   font-size: 16px;
-  background-color: #eee;
   margin: 32px;
+  background-color: #ddd;
 }
 h1 {
   text-align: center;
 }
-input[type="search"] {
+input[type='search'] {
   display: block;
   font-size: 18px;
   width: 300px;
@@ -22,19 +22,28 @@ input[type="search"] {
   padding: 0 16px;
   outline: none;
   transition: border-color 400ms;
+  z-index: 1;
 }
-input[type="search"]::placeholder {
+input[type='search']::placeholder {
   color: #888;
   transition: color 400ms;
 }
-input[type="search"]:focus {
+input[type='search']:focus {
   border-color: #444;
 }
-input[type="search"]:focus::placeholder {
+input[type='search']:focus::placeholder {
   color: #ccc;
 }
+.gutter-sizer {
+  width: 5%;
+  width: calc(32px);
+}
+.column-sizer,
 .item {
   width: 30%;
+  width: calc((100% - 64px) / 3);
+}
+.item {
   border: 2px solid #666;
   border-radius: 12px;
   padding: 24px;

@@ -1,20 +1,32 @@
 import $ from 'jquery';
 import stickybits from 'stickybits';
+import Isotope from 'isotope-layout';
+import imagesLoaded from 'imagesloaded';
 
-export function init() {
+export function init({
+  stickySelector,
+  gridSelector,
+  gridItemSelector,
+  columnSizerSelector,
+  gutterSizerSelector,
+}) {
   // Sticky search bar
-  stickybits('input');
+  stickybits(stickySelector);
 
   // Scroll to top of wrapper on typing in search bar
   // TODO
 
   // Masonry layout
-  const $items = $('.item');
-  console.log($items);
-  // var iso = new Isotope('.grid', {
-  //   itemSelector: '.item',
-  //   masonry: {
-  //     columnWidth:  200,
-  //   },
-  // });
+  var iso = new Isotope(gridSelector, {
+    itemSelector: gridItemSelector,
+    masonry: {
+      columnWidth: columnSizerSelector,
+      gutter: gutterSizerSelector,
+    },
+  });
+
+  // Trigger layout after images load
+  imagesLoaded(gridSelector, () => {
+    iso.layout();
+  });
 }
