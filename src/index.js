@@ -3,14 +3,24 @@ import stickybits from 'stickybits';
 import Isotope from 'isotope-layout';
 import imagesLoaded from 'imagesloaded';
 
-export function init({
-  stickySelector,
-  stickyOffset,
-  gridSelector,
-  gridItemSelector,
-  columnSizerSelector,
-  gutterSizerSelector,
-}) {
+export function init(options = {}) {
+  const defaultOptions = {
+    stickySelector: '.sticky',
+    stickyOffset: 16,
+    gridSelector: '.grid',
+    gridItemSelector: '.grid-item',
+    columnSizerSelector: '.column-sizer',
+    gutterSizerSelector: '.gutter-sizer',
+  };
+  const {
+    stickySelector,
+    stickyOffset,
+    gridSelector,
+    gridItemSelector,
+    columnSizerSelector,
+    gutterSizerSelector,
+  } = Object.assign({}, defaultOptions, options);
+
   // Sticky search bar
   stickybits(stickySelector, { stickyBitStickyOffset: stickyOffset });
 
@@ -26,7 +36,7 @@ export function init({
     },
   });
 
-  // Trigger layout after images load
+  // Refresh layout after images load
   imagesLoaded(gridSelector, () => {
     iso.layout();
   });

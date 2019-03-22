@@ -40,11 +40,11 @@ input[type='search']:focus::placeholder {
   width: calc(32px);
 }
 .column-sizer,
-.item {
+.grid-item {
   width: 30%;
   width: calc((100% - 64px) / 3);
 }
-.item {
+.grid-item {
   border: 2px solid #666;
   border-radius: 12px;
   padding: 24px;
