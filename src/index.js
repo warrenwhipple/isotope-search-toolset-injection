@@ -6,9 +6,9 @@ import Fuse from 'fuse.js';
 
 export function init(options = {}) {
   const defaultOptions = {
-    stickyWrapperSelector: '.sticky-wrapper',
+    wrapperSelector: '.isotope-search',
     stickySelector: '.sticky',
-    inputSelector: '.sticky-wrapper input',
+    inputSelector: '.isotope-search input',
     gridSelector: '.grid',
     columnSizerSelector: '.column-sizer',
     gutterSizerSelector: '.gutter-sizer',
@@ -17,9 +17,10 @@ export function init(options = {}) {
     topOffset: 16,
     layoutOnImagesLoaded: false,
     filteringClass: 'filtering',
+    transitionDuration: 200,
   };
   const {
-    stickyWrapperSelector,
+    wrapperSelector,
     stickySelector,
     inputSelector,
     gridSelector,
@@ -30,9 +31,10 @@ export function init(options = {}) {
     topOffset,
     layoutOnImagesLoaded,
     filteringClass,
+    transitionDuration,
   } = Object.assign({}, defaultOptions, options);
 
-  const $stickyWrapper = $(stickyWrapperSelector),
+  const $stickyWrapper = $(wrapperSelector),
     $input = $(inputSelector),
     $grid = $(gridSelector),
     $items = $(gridItemSelector);
@@ -47,6 +49,7 @@ export function init(options = {}) {
       columnWidth: columnSizerSelector,
       gutter: gutterSizerSelector,
     },
+    transitionDuration,
     getSortData: {
       score: '[isotope-search-score] parseFloat',
     },
@@ -65,9 +68,13 @@ export function init(options = {}) {
     const scrollTarget = Math.round($stickyWrapper.offset().top - topOffset);
     if ($('html').scrollTop() == scrollTarget) return;
     isScrollingToWrapperTop = true;
-    $('html,body').animate({ scrollTop: scrollTarget }, 200, () => {
-      isScrollingToWrapperTop = false;
-    });
+    $('html,body').animate(
+      { scrollTop: scrollTarget },
+      transitionDuration,
+      () => {
+        isScrollingToWrapperTop = false;
+      }
+    );
   }
 
   // Initialize Fuse.js search
