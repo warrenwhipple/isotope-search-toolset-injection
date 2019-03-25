@@ -33,7 +33,7 @@ input[type='search']:focus {
   border-color: #444;
 }
 input[type='search']:focus::placeholder {
-  color: #ccc;
+  color: #fff;
 }
 .gutter-sizer {
   width: 5%;

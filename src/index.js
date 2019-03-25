@@ -5,30 +5,33 @@ import imagesLoaded from 'imagesloaded';
 
 export function init(options = {}) {
   const defaultOptions = {
+    stickyWrapperSelector: '.sticky-wrapper',
     stickySelector: '.sticky',
-    stickyOffset: 16,
+    inputSelector: '.sticky-wrapper input',
     gridSelector: '.grid',
     gridItemSelector: '.grid-item',
     columnSizerSelector: '.column-sizer',
     gutterSizerSelector: '.gutter-sizer',
+    topOffset: 16,
+    layoutOnImagesLoaded: false,
   };
   const {
+    stickyWrapperSelector,
     stickySelector,
-    stickyOffset,
+    inputSelector,
     gridSelector,
     gridItemSelector,
     columnSizerSelector,
     gutterSizerSelector,
+    topOffset,
+    layoutOnImagesLoaded,
   } = Object.assign({}, defaultOptions, options);
 
   // Sticky search bar
-  stickybits(stickySelector, { stickyBitStickyOffset: stickyOffset });
-
-  // Scroll to top of wrapper on typing in search bar
-  // TODO
+  stickybits(stickySelector, { stickyBitStickyOffset: topOffset });
 
   // Masonry layout
-  var iso = new Isotope(gridSelector, {
+  const iso = new Isotope(gridSelector, {
     itemSelector: gridItemSelector,
     masonry: {
       columnWidth: columnSizerSelector,
@@ -37,7 +40,27 @@ export function init(options = {}) {
   });
 
   // Refresh layout after images load
-  imagesLoaded(gridSelector, () => {
-    iso.layout();
+  if (layoutOnImagesLoaded)
+    imagesLoaded(gridSelector, () => {
+      iso.layout();
+    });
+
+  // Scroll to wrapper top
+  const $stickyWrapper = $(stickyWrapperSelector);
+  let isScrollingToWrapperTop = false;
+  function scrollToWrapperTop() {
+    if (isScrollingToWrapperTop) return;
+    const scrollTarget = Math.round($stickyWrapper.offset().top - topOffset);
+    if ($('html').scrollTop() == scrollTarget) return;
+    isScrollingToWrapperTop = true;
+    $('html,body').animate({ scrollTop: scrollTarget }, 200, () => {
+      isScrollingToWrapperTop = false;
+    });
+  }
+
+  // On input change: scroll
+  const $input = $(inputSelector);
+  $input.on('change keyup paste', () => {
+    scrollToWrapperTop();
   });
 }
