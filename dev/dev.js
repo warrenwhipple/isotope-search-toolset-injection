@@ -4,9 +4,9 @@ $(function() {
     $('.grid').append(
       '<div class="grid-item"><img src="' +
         faker.image.avatar() +
-        '"><h2 class="name">' +
+        '"><h2 class="name search-text">' +
         faker.name.findName() +
-        '</h2><p class="company">' +
+        '</h2><p class="company search-text">' +
         faker.name.jobTitle() +
         '</p><p class="quote">' +
         faker.lorem.paragraph() +
@@ -14,5 +14,8 @@ $(function() {
     );
 
   // Initialize isotope search
-  isotopeSearch.init({ layoutOnImagesLoaded: true });
+  isotopeSearch.init({
+    searchTextSelectors: ['.name', '.company', '.quote'],
+    layoutOnImagesLoaded: true,
+  });
 });
