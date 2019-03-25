@@ -78,23 +78,22 @@ export function init(options = {}) {
   }
 
   // Initialize Fuse.js search
-  const dotless = s => s.replace('.', '~');
-  const fuseList = $items.get().map((item, index) => {
-    let fuseEntry = { id: index };
-    searchTextSelectors.forEach(selector => {
-      fuseEntry[dotless(selector.selector || selector)] = $(item)
+  const fuseList = $items.get().map((item, itemIndex) => {
+    let fuseEntry = { id: itemIndex };
+    searchTextSelectors.forEach((selector, selectorIndex) => {
+      fuseEntry[selectorIndex.toString()] = $(item)
         .find(selector.selector || selector)
         .text();
     });
     return fuseEntry;
   });
-  const fuseKeys = searchTextSelectors.map(value =>
-    $.type(value) === 'string'
-      ? dotless(value)
-      : {
-          name: dotless(value.selector),
-          weight: value.selector,
+  const fuseKeys = searchTextSelectors.map((selector, index) =>
+    selector.weight
+      ? {
+          name: index.toString(),
+          weight: selector.weight,
         }
+      : index.toString()
   );
   const fuseOptions = {
     id: 'id',
