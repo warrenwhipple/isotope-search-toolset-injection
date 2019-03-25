@@ -15,7 +15,11 @@ $(function() {
 
   // Initialize isotope search
   isotopeSearch.init({
-    searchTextSelectors: ['.name', '.company', '.quote'],
+    searchTextSelectors: [
+      { selector: '.name', weight: 0.5 },
+      { selector: '.company', weight: 0.4 },
+      { selector: '.quote', weight: 0.1 },
+    ],
     layoutOnImagesLoaded: true,
   });
 });

@@ -99,14 +99,10 @@ export function init(options = {}) {
     id: 'id',
     tokenize: true,
     includeScore: true,
-    threshold: 0.6,
-    location: 0,
-    distance: 1000,
-    maxPatternLength: 32,
-    minMatchCharLength: 1,
     keys: fuseKeys,
   };
   const fuse = new Fuse(fuseList, fuseOptions);
+  console.log(fuse);
 
   // On input change: scroll
   $input.on('change keyup paste', () => {
