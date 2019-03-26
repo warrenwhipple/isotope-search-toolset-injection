@@ -104,6 +104,25 @@ export function init(options = {}) {
   const fuse = new Fuse(fuseList, fuseOptions);
   console.log(fuse);
 
+  // Score items by search
+  function scoreBySearch(text) {
+    const scores = fuse.search(text).reduce((object, item) => {
+      object[item.item] = item.score;
+      return object;
+    }, {});
+    $items.each((index, item) => {
+      const score = scores[index.toString()] || 1;
+      $(item).attr('isotope-search-score', score);
+    });
+  }
+
+  // Score items by origin order
+  function scoreByIndex() {
+    $items.each((index, item) => {
+      $(item).attr('isotope-search-score', index * 0.00001);
+    });
+  }
+
   // On input change: scroll
   $input.on('change keyup paste', () => {
     scrollToWrapperTop();
@@ -111,20 +130,13 @@ export function init(options = {}) {
       .val()
       .replace(/\s+/g, ' ')
       .trim();
-    if (!cleanedSearch) {
+    if (cleanedSearch) {
+      scoreBySearch(cleanedSearch);
+      $stickyWrapper.addClass(filteringClass);
+    } else {
+      scoreByIndex();
       $stickyWrapper.removeClass(filteringClass);
-      isotope.layout();
-      return;
     }
-    $stickyWrapper.addClass(filteringClass);
-    var scores = fuse.search(cleanedSearch).reduce((object, item) => {
-      object[item.item] = item.score;
-      return object;
-    }, {});
-    $items.each((index, item) => {
-      var score = scores[index.toString()] || 1;
-      $(item).attr('isotope-search-score', score);
-    });
     isotope.updateSortData($items);
     isotope.arrange({
       sortBy: 'score',
