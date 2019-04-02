@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Filter a masonry view by search bar input",
   "private": true,
+  "homepage": "https://github.com/warrenwhipple/isotope-search-toolset-injection",
   "repository": {
     "type": "git",
     "url": "https://github.com/warrenwhipple/isotope-search-toolset-injection.git"
