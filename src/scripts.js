@@ -102,7 +102,6 @@ export function init(options = {}) {
     keys: fuseKeys,
   };
   const fuse = new Fuse(fuseList, fuseOptions);
-  console.log(fuse);
 
   // Score items by search
   function scoreBySearch(text) {

@@ -1,15 +1,15 @@
 {
-  "name": "isotope-search",
+  "name": "isotope-search-toolset-injection",
   "version": "1.0.0",
-  "description": "Filter a masonry view by wearhc bar input",
+  "description": "Filter a masonry view by search bar input",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/warrenwhipple/isotope-search.git"
+    "url": "https://github.com/warrenwhipple/isotope-search-toolset-injection.git"
   },
   "scripts": {
     "build": "gulp build",
-    "dev": "gulp dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp dev"
   },
   "keywords": [
     "isotope",
@@ -33,6 +33,10 @@
     "babel-loader": "^8.0.5",
     "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-mustache": "^4.1.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
     "jquery": "^3.3.1",
     "webpack": "^4.29.6",
     "webpack-stream": "^5.2.1"

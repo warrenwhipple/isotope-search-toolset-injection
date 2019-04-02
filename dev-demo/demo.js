@@ -14,7 +14,7 @@ $(function() {
     );
 
   // Initialize isotope search
-  isotopeSearch.init({
+  bundle.init({
     searchTextSelectors: [
       { selector: '.name', weight: 0.5 },
       { selector: '.company', weight: 0.4 },
