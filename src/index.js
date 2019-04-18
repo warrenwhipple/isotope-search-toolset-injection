@@ -7,16 +7,16 @@ import Fuse from 'fuse.js';
 export function init(options = {}) {
   const defaultOptions = {
     wrapperSelector: '.isotope-search',
-    stickySelector: '.sticky',
+    stickySelector: '.isotope-search__sticky',
     inputSelector: '.isotope-search input',
-    gridSelector: '.grid',
-    columnSizerSelector: '.column-sizer',
-    gutterSizerSelector: '.gutter-sizer',
-    gridItemSelector: '.grid-item',
-    searchTextSelectors: ['.search-text'],
+    gridSelector: '.isotope-search__grid',
+    columnSizerSelector: '.isotope-search__column-sizer',
+    gutterSizerSelector: '.isotope-search__gutter-sizer',
+    gridItemSelector: '.isotope-search__item',
+    searchTextSelectors: ['.isotope-search__search-text'],
     topOffset: 16,
     layoutOnImagesLoaded: false,
-    filteringClass: 'filtering',
+    filteringClass: 'isotope-search--filtering',
     transitionDuration: 200,
   };
   const {

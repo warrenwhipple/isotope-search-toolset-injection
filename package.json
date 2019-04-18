@@ -33,6 +33,7 @@
     "@babel/preset-env": "^7.4.2",
     "babel-loader": "^8.0.5",
     "browser-sync": "^2.26.3",
+    "faker": "^4.1.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-mustache": "^4.1.1",

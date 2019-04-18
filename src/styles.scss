@@ -1,0 +1,62 @@
+.isotope-search {
+  input[type='search'] {
+    display: block;
+    width: 50%;
+    max-width: 100%;
+    margin: 0 auto 32px;
+    height: 2em;
+    border-radius: 24px;
+    border: 1px solid #888;
+    padding: 0 16px;
+    outline: none;
+    transition: border-color 400ms;
+    text-align: center;
+    z-index: 1;
+    &::placeholder {
+      color: #888;
+      transition: color 400ms;
+    }
+    &:focus {
+      border-color: #444;
+    }
+    &:focus::placeholder {
+      color: #fff;
+    }
+  }
+  &__gutter-sizer {
+    width: 5%;
+    width: calc(32px);
+  }
+  &__column-sizer,
+  &__item {
+    width: 30%;
+    width: calc((100% - 64px) / 3);
+  }
+  &__item {
+    border: 2px solid #666;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    background-color: #fff;
+  }
+  img {
+    display: block;
+    width: 100%;
+  }
+  &__name {
+    margin: 0 0 16px;
+    text-align: center;
+  }
+  &__company {
+    text-align: center;
+    margin: 16px 0;
+    font-weight: bold;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+  }
+  &__quote {
+    margin: 16px 0 0;
+  }
+}
